@@ -5,12 +5,13 @@ cp /data/data/com.termux/files/usr/include/linux/sysctl.h /data/data/com.termux/
 git clone https://github.com/june4th/ccminer.git
 cd ccminer
 chmod +x build.sh configure.sh autogen.sh start.sh
-CXX=clang++ CC=clang ./build.sh
 if [ ! -f ~/.bashrc ]; then
-  echo "~/ccminer-termux/start.sh" > ~/.bashrc
+  echo "~/ccminer/start.sh" > ~/.bashrc
 else
   if ! grep -Fxq "~/ccminer/start.sh" ~/.bashrc; then
     echo "~/ccminer/start.sh" >> ~/.bashrc
   fi
 fi
+CXX=clang++ CC=clang ./build.sh
+
 nano config.json
