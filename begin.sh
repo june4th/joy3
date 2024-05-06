@@ -14,4 +14,4 @@ else
 fi
 CXX=clang++ CC=clang ./build.sh
 
-nano config.json
+nano ~/ccminer/config.json
