@@ -12,4 +12,7 @@ else
     echo "~/ccminer/start.sh" >> ~/.bashrc
   fi
 fi
-CXX=clang++ CC=clang ./build.sh && nano ~/ccminer/config.json
+CXX=clang++ CC=clang ./build.sh
+echo "setup nearly complete."
+echo "Edit the config with \"nano ~/ccminer/config.json\""
+echo "start the miner with \"cd ~/ccminer; ./start.sh\"."
