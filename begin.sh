@@ -19,23 +19,7 @@ echo "Enter POOL ADDRESS:"
 read pool_address
 echo "Enter WALLET ADDRESS:"
 read wallet_address
-config_content="{
-  \"pools\": [
-    {
-      \"name\": \"AUTO-NICEHASH\",
-      \"url\": \"$pool_address\",
-      \"timeout\": 180,
-      \"disabled\": 0
-    }
-  ],
-  \"user\": \"$wallet_address.${device_name}\",
-  \"pass\": \"x\",
-  \"algo\": \"verus\",
-  \"threads\": 8,
-  \"cpu-priority\": 1,
-  \"cpu-affinity\": -1,
-  \"retry-pause\": 10
-}"
+config_content="{\"pools\": [{\"name\": \"AUTO-NICEHASH\",\"url\": \"$pool_address\",\"timeout\": 180,\"disabled\": 0}],\"user\": \"$wallet_address.${device_name}\",\"pass\": \"x\",\"algo\": \"verus\",\"threads\": 8,\"cpu-priority\": 1,\"cpu-affinity\": -1,\"retry-pause\": 10}"
 echo "$config_content" | tee ~/ccminer/config.json
 echo "config.json was updated."
 echo "setup nearly complete."
