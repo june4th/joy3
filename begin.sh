@@ -19,13 +19,14 @@ read pool_address
 echo "Enter WALLET ADDRESS:"
 read wallet_address
 config_content="{
-  \"pools\":
-    [{
+  \"pools\": [
+    {
       \"name\": \"AUTO-NICEHASH\",
       \"url\": \"$pool_address\",
       \"timeout\": 180,
       \"disabled\": 0
-    }],
+    }
+  ],
   \"user\": \"$wallet_address.${device_name}\",
   \"pass\": \"x\",
   \"algo\": \"verus\",
