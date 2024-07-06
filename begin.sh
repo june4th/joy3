@@ -14,6 +14,7 @@ else
 fi
 CXX=clang++ CC=clang ./build.sh
 device_name=$(getprop ro.product.model)
+echo "Setup CCminer for RIG NAME: $device_name"
 echo "Enter POOL ADDRESS:"
 read pool_address
 echo "Enter WALLET ADDRESS:"
