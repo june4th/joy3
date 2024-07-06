@@ -1,4 +1,15 @@
 #!/bin/bash
+device_name=$(adb shell getprop ro.product.model)
+echo "Setup CCminer for RIG NAME: $device_name"
+while true; do
+    read -p "Enter POOL ADDRESS: " pool_address
+    if [[ "$pool_address" =~ ^stratum\+tcp:// ]]; then
+        break
+    else
+        echo "Invalid pool address. Please use the format stratum+tcp://..."
+    fi
+done
+read -p "Enter WALLET ADDRESS: " wallet_address
 yes | pkg update && pkg upgrade
 yes | pkg install libjansson build-essential clang binutils git
 cp /data/data/com.termux/files/usr/include/linux/sysctl.h /data/data/com.termux/files/usr/include/sys
@@ -13,12 +24,6 @@ else
   fi
 fi
 CXX=clang++ CC=clang ./build.sh
-device_name=$(getprop ro.product.model)
-echo "Setup CCminer for RIG NAME: $device_name"
-echo "Enter POOL ADDRESS:"
-read pool_address
-echo "Enter WALLET ADDRESS:"
-read wallet_address
 config_content="{\"pools\": [{\"name\": \"AUTO-NICEHASH\",\"url\": \"$pool_address\",\"timeout\": 180,\"disabled\": 0}],\"user\": \"$wallet_address.${device_name}\",\"pass\": \"x\",\"algo\": \"verus\",\"threads\": 8,\"cpu-priority\": 1,\"cpu-affinity\": -1,\"retry-pause\": 10}"
 echo "$config_content" | tee ~/ccminer/config.json
 echo "config.json was updated."
