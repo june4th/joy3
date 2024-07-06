@@ -1,14 +1,7 @@
 #!/bin/bash
-device_name=$(adb shell getprop ro.product.model)
+device_name=$(getprop ro.product.model)
 echo "Setup CCminer for RIG NAME: $device_name"
-while true; do
-    read -p "Enter POOL ADDRESS: " pool_address
-    if [[ "$pool_address" =~ ^stratum\+tcp:// ]]; then
-        break
-    else
-        echo "Invalid pool address. Please use the format stratum+tcp://..."
-    fi
-done
+read -p "Enter POOL ADDRESS: " pool_address
 read -p "Enter WALLET ADDRESS: " wallet_address
 yes | pkg update && pkg upgrade
 yes | pkg install libjansson build-essential clang binutils git
