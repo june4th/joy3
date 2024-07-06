@@ -14,15 +14,19 @@ else
 fi
 CXX=clang++ CC=clang ./build.sh
 device_name=$(getprop ro.product.model)
+echo "Enter POOL ADDRESS:"
+read pool_address
+echo "Enter WALLET ADDRESS:"
+read wallet_address
 config_content="{
   \"pools\":
     [{
       \"name\": \"AUTO-NICEHASH\",
-      \"url\": \"stratum+tcp://verushash.auto.nicehash.com:9200\",
+      \"url\": \"$pool_address\",
       \"timeout\": 180,
       \"disabled\": 0
     }],
-  \"user\": \"NHbJB5KUkEUhp5pAkUYbera7bfdXWKTgjbNE.${device_name}\",
+  \"user\": \"$wallet_address.${device_name}\",
   \"pass\": \"x\",
   \"algo\": \"verus\",
   \"threads\": 8,
