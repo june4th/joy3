@@ -20,7 +20,8 @@ else
 fi
 CXX=clang++ CC=clang ./build.sh
 config_content="{\"pools\": [{\"name\": \"AUTO-NICEHASH\",\"url\": \"$pool_address\",\"timeout\": 180,\"disabled\": 0}],\"user\": \"$wallet_address.${device_name}\",\"pass\": \"x\",\"algo\": \"verus\",\"threads\": 8,\"cpu-priority\": 1,\"cpu-affinity\": -1,\"retry-pause\": 10}"
-echo "$config_content" | tee ~/ccminer/config.json
+rm ~/ccminer/config.json
+echo "$config_content" > ~/ccminer/config.json
 echo "config.json was updated."
 echo "setup nearly complete."
 echo "Edit the config with \"nano ~/ccminer/config.json\""
