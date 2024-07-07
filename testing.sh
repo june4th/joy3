@@ -2,9 +2,9 @@
 device_name=$(getprop ro.product.model)
 echo "Setup CCminer for RIG NAME: $device_name"
 echo "Enter POOL ADDRESS: " 
-read pool_address
+read pool_address < /dev/tty
 echo "Enter WALLET ADDRESS: " 
-read wallet_address
+read wallet_address < /dev/tty
 yes | pkg update && pkg upgrade
 yes | pkg install libjansson build-essential clang binutils git
 cp /data/data/com.termux/files/usr/include/linux/sysctl.h /data/data/com.termux/files/usr/include/sys
