@@ -1,5 +1,5 @@
 #!/bin/bash
-device_name=$(getprop ro.product.model)
+device_name=$(getprop ro.product.name)
 echo "Setup CCminer for RIG NAME: $device_name"
 echo "Enter POOL ADDRESS: " 
 read pool_address < /dev/tty
