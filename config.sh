@@ -1,6 +1,6 @@
 #!/bin/bash
-device_name=$(getprop ro.product.name)
-echo "Setup CCminer for RIG NAME: $device_name"
+echo "Setup CCminer for RIG NAME: "
+read device_name < /dev/tty
 echo "Enter POOL ADDRESS: " 
 read pool_address < /dev/tty
 echo "Enter WALLET ADDRESS: " 
